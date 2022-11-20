@@ -21,36 +21,52 @@ while close == 'n' :
     autumn = pd.read_csv("TEmperature in Madrid - Autumn-Mean.csv")
     if monthy == 12 :
         print("             ---------Begin to Winter---------")
+        print("Covariant Matrix")
         print(winter.cov())
-        print()
+        print("\nCorrelation Matrix")
+        print(winter.corr(method="pearson"))
     elif monthy <= 2 :
         print("             ---------Winter Season-----------") 
+        print("Covariant Matrix")
         print(winter.cov())
-        print()
+        print("\nCorrelation Matrix")
+        print(winter.corr(method="pearson"))
     elif monthy == 3 :
         print("             ---------Begin to Spring---------")
+        print("Covariant Matrix")
         print(spring.cov())
-        print()
+        print("\nCorrelation Matrix")
+        print(spring.corr(method="pearson"))
     elif monthy <= 5 :
         print("             ---------Spring Season-----------")
+        print("Covariant Matrix")
         print(spring.cov())
-        print()
+        print("\nCorrelation Matrix")
+        print(spring.corr(method="pearson"))
     elif monthy == 6 :
         print("             ---------Begin to Summer---------")
+        print("Covariant Matrix")
         print(summer.cov())
-        print()
+        print("\nCorrelation Matrix")
+        print(summer.corr(method="pearson"))
     elif monthy <= 8 :
-        print("             ---------Summer Season-----------")
+        print("             ---------Summer Season---------")
+        print("Covariant Matrix")
         print(summer.cov())
-        print()
+        print("\nCorrelation Matrix")
+        print(summer.corr(method="pearson"))
     elif monthy == 9 :
         print("             ---------Begin to Autumn----------")
+        print("Covariant Matrix")
         print(autumn.cov())
-        print()
+        print("\nCorrelation Matrix")
+        print(autumn.corr(method="pearson"))
     elif monthy <= 11 :
-        print("             ---------Autumn Season------------")
+        print("             ---------Autumn Season-----------")
+        print("Covariant Matrix")
         print(autumn.cov())
-        print()
+        print("\nCorrelation Matrix")
+        print(autumn.corr(method="pearson"))
     day_predict = monthlyDict[monthy] + day
     data = pd.read_csv("TEmperature in Madrid - 2019-2021-Mean.csv")
 
@@ -98,7 +114,7 @@ while close == 'n' :
     lm2.fit(x_train_poly2,y2)
     lm3 = LinearRegression()
     lm3.fit(x_train_poly3,y3)
-
+    print("                 --------- Prediction ---------")
     if day_predict >= 358 :
         print('High Tempareture is ' + str(lm1.predict([x_train_poly1[-1]]))[2:-2] + ' Celsius ' + "R^2 = {0}".format(lm1.score(x_train_poly1, y1)))
         print('Average Tempareture is ' + str(lm2.predict([x_train_poly2[-1]]))[2:-2] + ' Celsius ' + "R^2 = {0}".format(lm2.score(x_train_poly2, y2)))
