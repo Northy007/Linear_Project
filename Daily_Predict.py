@@ -14,60 +14,61 @@ while close == 'n' :
     print("***** Madrid Tempareture Prediction ******")
     print("Jan:1 Feb:2 Mar:3 Apr:4 May:5 Jun:6 Jul:7 Aug:8 Sep:9 Oct:10 Nov:11 Dec:12")
     monthy = int(input("Enter Month : "))
+    
     day = int(input("Enter Date" + day_in_month[monthy] + " : "))
     winter = pd.read_csv("TEmperature in Madrid - Winter-Mean.csv")
     spring = pd.read_csv("TEmperature in Madrid - Spring-Mean.csv")
     summer = pd.read_csv("TEmperature in Madrid - Summer-Mean.csv")
     autumn = pd.read_csv("TEmperature in Madrid - Autumn-Mean.csv")
+    day_predict = monthlyDict[monthy] +day
     if monthy == 12 :
-        print("             ---------Begin to Winter---------")
+        print("               ---------Begin to Winter---------")
         print("Covariant Matrix")
         print(winter.cov())
-        print("\nCorrelation Matrix")
+        print("Correlation Matrix")
         print(winter.corr(method="pearson"))
     elif monthy <= 2 :
-        print("             ---------Winter Season-----------") 
+        print("               ---------Winter Season-----------") 
         print("Covariant Matrix")
         print(winter.cov())
         print("\nCorrelation Matrix")
         print(winter.corr(method="pearson"))
     elif monthy == 3 :
-        print("             ---------Begin to Spring---------")
+        print("               ---------Begin to Spring---------")
         print("Covariant Matrix")
         print(spring.cov())
         print("\nCorrelation Matrix")
         print(spring.corr(method="pearson"))
     elif monthy <= 5 :
-        print("             ---------Spring Season-----------")
+        print("               ---------Spring Season-----------")
         print("Covariant Matrix")
         print(spring.cov())
         print("\nCorrelation Matrix")
         print(spring.corr(method="pearson"))
     elif monthy == 6 :
-        print("             ---------Begin to Summer---------")
+        print("               ---------Begin to Summer---------")
         print("Covariant Matrix")
         print(summer.cov())
         print("\nCorrelation Matrix")
         print(summer.corr(method="pearson"))
     elif monthy <= 8 :
-        print("             ---------Summer Season---------")
+        print("               ---------Summer Season---------")
         print("Covariant Matrix")
         print(summer.cov())
         print("\nCorrelation Matrix")
         print(summer.corr(method="pearson"))
     elif monthy == 9 :
-        print("             ---------Begin to Autumn----------")
+        print("               ---------Begin to Autumn----------")
         print("Covariant Matrix")
         print(autumn.cov())
         print("\nCorrelation Matrix")
         print(autumn.corr(method="pearson"))
     elif monthy <= 11 :
-        print("             ---------Autumn Season-----------")
+        print("               ---------Autumn Season-----------")
         print("Covariant Matrix")
         print(autumn.cov())
         print("\nCorrelation Matrix")
         print(autumn.corr(method="pearson"))
-    day_predict = monthlyDict[monthy] + day
     data = pd.read_csv("TEmperature in Madrid - 2019-2021-Mean.csv")
 
     x_col = 'number'
