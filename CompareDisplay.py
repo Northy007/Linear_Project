@@ -2,24 +2,21 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-
-
 import sklearn as sk
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 
-data = pd.read_csv("TEmperature in Madrid - 2019-2021-Mean.csv")
-data2 = pd.read_csv("TEmperature in Madrid - PredictLowTemp.csv")
+data = pd.read_csv("TEmperature in Madrid - 2021.csv")
+data2 = pd.read_csv("TEmperature in Madrid - PredictHighTemp.csv")
 
 x_col = 'number'
-y_col = 'LowMean'
+y_col = 'HighTemp'
 a = data[x_col].values
 b = data[y_col].values
 
 day = data2['number']
-temp = data2['mean']
+temp = data2['high2021']
 
 X = a
 y = b

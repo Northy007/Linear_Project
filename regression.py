@@ -12,9 +12,9 @@ from sklearn.linear_model import LinearRegression
 day_predict = 1
 res = []
 while day_predict <= 365 :
-    data = pd.read_csv("TEmperature in Madrid - 2021.csv")
+    data = pd.read_csv("TEmperature in Madrid - 2019.csv")
     x_col = 'number'
-    y_col = 'HighTemp'
+    y_col = 'AverageTemp'
     a = data[x_col].values
     b = data[y_col].values
     if day_predict == 1: 

@@ -150,13 +150,13 @@ while close == 'n' :
         print('Low Tempareture is ' + str(lm3.predict([x_train_poly3[0]]))[2:-2] + ' Celsius' + "R^2 = {0}".format(lm3.score(x_train_poly3, y3)))
     s = "" #คำบรรยายสภาพอากาศ
     if float(lm2.predict([x_train_poly2[0]])) > 25 :
-        s += "อากาศอาจจะร้อนถึงร้อนมาก"
+        s += "Today the weather is hot to very hot."
     elif float(lm2.predict([x_train_poly2[0]])) > 15 :
-        s += "วันนี้อากาศค่อนข้างดีเลยนะ!"
+        s += "Today the weather is pretty good.!"
     elif float(lm2.predict([x_train_poly2[0]])) >= 0 :
-        s += "อากาศวันนี้ค่อนข้างเย็น"
+        s += "Today the weather is pretty cool"
     elif float(lm2.predict([x_train_poly2[0]])) < 0 :
-        s += "วันนี้อากาศหนาวมาก!"
+        s += "Today's weather is very cold."
     #แสดงสภาพอากาศของวันนั้น
     print("->>>>             {0}                  ".format(s))
 
