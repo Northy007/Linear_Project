@@ -11,10 +11,12 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 day_predict = 1
 res = []
+x_axis = input("Enter x-axis [lowT:Low Temperature, avT:Average Temperature, highT:High Temperature]\n\t[lowT:Low Temperature, avT:Average Temperature, highT:High Temperature\] :")
+y_axis = input("Enter x-axis [lowT:Low Temperature, avT:Average Temperature, highT:High Temperature]\n\t[lowT:Low Temperature, avT:Average Temperature, highT:High Temperature\] :")
 while day_predict <= 8 :
-    data = pd.read_csv("TEmperature in Madrid - 2020.csv")
-    x_col = 'number'
-    y_col = 'LowTemp'
+    data = pd.read_csv("TEmperature in Madrid - 2019-2021-Mean.csv")
+    x_col = 'AVMean'
+    y_col = 'AVDMean'
     a = data[x_col].values
     b = data[y_col].values
     if day_predict == 1: 
