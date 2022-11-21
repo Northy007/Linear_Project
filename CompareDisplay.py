@@ -7,16 +7,16 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 
-data = pd.read_csv("TEmperature in Madrid - 2019-2021-Mean.csv")
-data2 = pd.read_csv("TEmperature in Madrid - 2019-2021-MeanPredict.csv")
+data = pd.read_csv("TEmperature in Madrid - 2020.csv")
+data2 = pd.read_csv("TEmperature in Madrid - PredictLowTemp.csv")
 
 x_col = 'number'
-y_col = 'LowMean'
+y_col = 'LowTemp'
 a = data[x_col].values
 b = data[y_col].values
 
 day = data2['number']
-temp = data2['lowPre']
+temp = data2['low2019']
 
 X = a
 y = b

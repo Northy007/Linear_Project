@@ -98,7 +98,7 @@ while close == 'n' :
 
     x_col = 'number'
     High_col = 'HighMean'
-    AV_col = 'AVTemp'
+    AV_col = 'AVMean'
     Low_col = 'LowMean'
     z_col = 'Date'
     a = data[x_col].values

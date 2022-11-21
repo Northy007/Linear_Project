@@ -11,10 +11,10 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 day_predict = 1
 res = []
-while day_predict <= 365 :
-    data = pd.read_csv("TEmperature in Madrid - 2019-2021-Mean.csv")
+while day_predict <= 8 :
+    data = pd.read_csv("TEmperature in Madrid - 2020.csv")
     x_col = 'number'
-    y_col = 'HighMean'
+    y_col = 'LowTemp'
     a = data[x_col].values
     b = data[y_col].values
     if day_predict == 1: 
@@ -45,9 +45,18 @@ while day_predict <= 365 :
         res.append(str(lm.predict([x_train_poly[0]])))
     day_predict += 1
 
-l = []
-for i in res :
-    l.append(float(i[2:-2]))
-for j in l :
-    print(j)
+# l = []
+# for i in res :
+#     l.append(float(i[2:-2]))
+# for j in l :
+#     print(j)
 
+
+fig = plt.figure(figsize=(10,6))
+plt.scatter(X, y, color = 'Green', alpha=.3)
+plt.scatter(X, lm.predict(poly_reg.fit_transform(X)), color = 'Blue', alpha=.3)
+plt.plot(X, lm.predict(poly_reg.fit_transform(X)),color = 'red', alpha = .5)
+plt.title('Polynomial Regression')
+plt.xlabel(x_col)
+plt.ylabel(y_col)
+plt.show()
