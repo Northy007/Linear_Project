@@ -125,14 +125,14 @@ while close == 'n' :
         print('Average Tempareture is ' + str(lm2.predict([x_train_poly2[0]]))[2:-2] + ' Celsius ' + "R^2 = {0}".format(lm2.score(x_train_poly2, y2)))
         print('Low Tempareture is ' + str(lm3.predict([x_train_poly3[0]]))[2:-2] + ' Celsius' + "R^2 = {0}".format(lm3.score(x_train_poly3, y3)))
 
-
+    #จุดเข้มคืออุณหภูมิจริง - จุดอ่อนคืออุณหภูมิ predict
     fig = plt.figure(figsize=(10,6))
     plt.scatter(Z, lm1.predict(x_train_poly1), color = 'red', alpha=.3)
     plt.scatter(Z, lm2.predict(x_train_poly2), color = 'Green', alpha=.3)
     plt.scatter(Z, lm3.predict(x_train_poly3), color = 'blue', alpha=.3)
-    plt.plot(Z, y1,color = 'red', alpha = .5)
-    plt.plot(Z, y2,color = 'green', alpha = .5)
-    plt.plot(Z, y3,color = 'blue', alpha = .5)
+    plt.scatter(Z, y1,color = 'red', alpha = 1)
+    plt.scatter(Z, y2,color = 'green', alpha = 1)
+    plt.scatter(Z, y3,color = 'blue', alpha = 1)
     plt.title('Polynomial Regression')
     plt.ylabel("Temperature in Celsius")
     plt.xlabel("Date")
