@@ -6,7 +6,7 @@ import sklearn as sk
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
-
+state = ""
 monthlyDict = {1:0, 2:31, 3:59, 4:90, 5:120, 6:151, 7:181, 8:212, 9:243, 10:273, 11:304, 12:334}
 close = 'n'
 while close == 'n' :
@@ -22,6 +22,7 @@ while close == 'n' :
     autumn = pd.read_csv("TEmperature in Madrid - Autumn-Mean.csv")
     day_predict = monthlyDict[monthy] +day
     if monthy == 12 :
+        state = "winter"
         print("               ---------Begin to Winter---------")
         print("Covariant Matrix")
         winterCov = winter.cov()
@@ -30,6 +31,7 @@ while close == 'n' :
         winterCor = winter.corr(method="pearson")
         print(winter.corr(method="pearson"))
     elif monthy <= 2 :
+        state = "winter"
         print("               ---------Winter Season-----------") 
         print("Covariant Matrix")
         winterCov = winter.cov()
@@ -38,6 +40,7 @@ while close == 'n' :
         winterCor = winter.corr(method="pearson")
         print(winter.corr(method="pearson"))
     elif monthy == 3 :
+        state = "spring"
         print("               ---------Begin to Spring---------")
         print("Covariant Matrix")
         springCov = spring.cov()
@@ -46,6 +49,7 @@ while close == 'n' :
         springCor = spring.corr(method="pearson")
         print(spring.corr(method="pearson"))
     elif monthy <= 5 :
+        state = "spring"
         print("               ---------Spring Season-----------")
         print("Covariant Matrix")
         springCov = spring.cov()
@@ -54,6 +58,7 @@ while close == 'n' :
         springCor = spring.corr(method="pearson")
         print(spring.corr(method="pearson"))
     elif monthy == 6 :
+        state = "summer"
         print("               ---------Begin to Summer---------")
         print("Covariant Matrix")
         summerCov = summer.cov()
@@ -62,6 +67,7 @@ while close == 'n' :
         summerCor = summer.corr(method="pearson")
         print(summer.corr(method="pearson"))
     elif monthy <= 8 :
+        state = "summer"
         print("               ---------Summer Season---------")
         print("Covariant Matrix")
         summerCov = summer.cov()
@@ -70,6 +76,7 @@ while close == 'n' :
         summerCor = summer.corr(method="pearson")
         print(summer.corr(method="pearson"))
     elif monthy == 9 :
+        state = "autumn"
         print("               ---------Begin to Autumn----------")
         print("Covariant Matrix")
         autumnCov = autumn.cov()
@@ -78,6 +85,7 @@ while close == 'n' :
         autumnCor = autumn.corr(method="pearson")
         print(autumn.corr(method="pearson"))
     elif monthy <= 11 :
+        state = "autumn"
         print("               ---------Autumn Season-----------")
         print("Covariant Matrix")
         autumnCov = autumn.cov()
@@ -140,6 +148,17 @@ while close == 'n' :
         print('High Tempareture is ' + str(lm1.predict([x_train_poly1[0]]))[2:-2] + ' Celsius ' + "R^2 = {0}".format(lm1.score(x_train_poly1, y1)))
         print('Average Tempareture is ' + str(lm2.predict([x_train_poly2[0]]))[2:-2] + ' Celsius ' + "R^2 = {0}".format(lm2.score(x_train_poly2, y2)))
         print('Low Tempareture is ' + str(lm3.predict([x_train_poly3[0]]))[2:-2] + ' Celsius' + "R^2 = {0}".format(lm3.score(x_train_poly3, y3)))
+    s = "" #คำบรรยายสภาพอากาศ
+    if float(lm2.predict([x_train_poly2[0]])) > 25 :
+        s += "อากาศอาจจะร้อนถึงร้อนมาก"
+    elif float(lm2.predict([x_train_poly2[0]])) > 15 :
+        s += "วันนี้อากาศค่อนข้างดีเลยนะ!"
+    elif float(lm2.predict([x_train_poly2[0]])) >= 0 :
+        s += "อากาศวันนี้ค่อนข้างเย็น"
+    elif float(lm2.predict([x_train_poly2[0]])) < 0 :
+        s += "วันนี้อากาศหนาวมาก!"
+    #แสดงสภาพอากาศของวันนั้น
+    print("->>>>             {0}                  ".format(s))
 
     #จุดเข้มคืออุณหภูมิจริง - จุดอ่อนคืออุณหภูมิ predict
     fig = plt.figure(figsize=(10,6))
